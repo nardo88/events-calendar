@@ -1,39 +1,46 @@
 import dayjs from 'dayjs'
-import { FC, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import { classNames } from '../../../helpers/classNames'
 import cls from './Calendar.module.scss'
+import { ControlCalendar } from './ControlCalendar/ControlCalendar'
+import { createCalendar } from './createCalendar'
+
+import 'dayjs/locale/ru'
+dayjs.locale('ru')
 
 interface CalendarProps {
   className?: string
 }
 
-const ROWS_COUNT = 5
 export const Calendar: FC<CalendarProps> = ({ className }) => {
-  const [currentDate, setCurrentDate] = useState(new Date())
-  const date = new Date()
-  const date1 = dayjs()
+  const [currentDate, setCurrentDate] = useState(dayjs())
 
-  const startingDate = new Date(date.getFullYear(), date.getMonth(), 1)
-  const startingDate1 = dayjs().date(1)
+  const calendar = createCalendar(currentDate.year(), currentDate.month())
 
-  startingDate.setDate(startingDate.getDate() - (startingDate.getDay() - 1))
+  const nextMonth = useCallback(() => {
+    setCurrentDate(currentDate.add(1, 'month'))
+  }, [setCurrentDate, currentDate])
 
-  const dates = []
-  for (let i = 0; i < ROWS_COUNT * 7; i++) {
-    const date = new Date(startingDate)
-    dates.push({ date }) // тут буудем пушить еще и собития
-    startingDate.setDate(startingDate.getDate() + 1)
-  }
+  const prevMonth = useCallback(() => {
+    setCurrentDate(currentDate.subtract(1, 'month'))
+  }, [setCurrentDate, currentDate])
 
   return (
-    <div className={classNames(cls.Calendar, {}, [className])}>
-      {dates.map((date, index) => {
-        return (
-          <div key={index} className={classNames(cls.cell, {}, [])}>
-            <div className="date">{date.date.getDate()}</div>
-          </div>
-        )
-      })}
+    <div className={cls.calendarWrapper}>
+      <ControlCalendar
+        currentDate={currentDate}
+        onNext={nextMonth}
+        onPrev={prevMonth}
+      />
+      <div className={classNames(cls.Calendar, {}, [className])}>
+        {calendar.map((date, index) => {
+          return (
+            <div key={index} className={classNames(cls.cell, {}, [])}>
+              <div className="date">{date}</div>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }
