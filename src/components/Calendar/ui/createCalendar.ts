@@ -4,17 +4,11 @@ export function createCalendar(year: any, month: number) {
   const table = []
 
   for (let i = 0; i < getDay(date); i++) {
-    table.push('')
+    table.push(null)
   }
 
   while (date.getMonth() === month) {
-    table.push(date.getDate())
-
-    // if (getDay(date) % 7 === 6) {
-    //   // вс, последний день - перевод строки
-    //   table.push('')
-    // }
-
+    table.push({ value: date.getDate(), date: date.getTime() })
     date.setDate(date.getDate() + 1)
   }
 
@@ -22,7 +16,7 @@ export function createCalendar(year: any, month: number) {
   // 29 30 31 * * * *
   if (getDay(date) !== 0) {
     for (let i = getDay(date); i < 7; i++) {
-      table.push('')
+      table.push(null)
     }
   }
 
