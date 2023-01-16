@@ -1,37 +1,41 @@
 .Calendar {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    border-top: 1px solid #000;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
 }
 
 .cell {
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
-    height: 150px;
-    position: relative;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  height: 150px;
+  position: relative;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .date {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10px;
 }
 
 .today {
-    background-color: rgb(187, 225, 252);
+  background-color: rgb(187, 225, 252);
 }
 
 .overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .currentDay {
-    opacity: .3;
-    background-color: rgb(163, 219, 120);
+  opacity: 0.3;
+  background-color: rgb(163, 219, 120);
 }

@@ -20,8 +20,14 @@ export const ControlCalendar: FC<ControlCalendarProps> = ({
     <div className={classNames(cls.ControlCalendar, {}, [className])}>
       <p>{currentDate.format('MMMM YYYY')}</p>
       <div>
-        <button onClick={onPrev}>prev</button>
-        <button onClick={onNext}>next</button>
+        <button
+          className={classNames(cls.btn, {}, [cls.left])}
+          onClick={onPrev}>
+          &lt;
+        </button>
+        <button className={classNames(cls.btn, {}, [])} onClick={onNext}>
+          &gt;
+        </button>
       </div>
     </div>
   )

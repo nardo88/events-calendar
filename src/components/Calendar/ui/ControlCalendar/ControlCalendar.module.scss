@@ -1,10 +1,25 @@
 .ControlCalendar {
-    display: flex;
-    align-items: center;
-    padding: 20px 0;
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
 
-    p {
-        margin-right: 10px;
-        text-transform: capitalize;
-    }
+  p {
+    margin-right: 10px;
+    text-transform: capitalize;
+    width: 150px;
+  }
+}
+
+.btn {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 20px;
+}
+
+.left {
+  margin-right: 10px;
 }
