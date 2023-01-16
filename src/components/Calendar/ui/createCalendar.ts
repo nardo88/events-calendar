@@ -1,10 +1,16 @@
 export function createCalendar(year: any, month: number) {
   const date = new Date(year, month)
+  const lastDate = new Date(year, month)
 
   const table = []
 
-  for (let i = 0; i < getDay(date); i++) {
-    table.push(null)
+  for (let i = getDay(lastDate); i > 0; i--) {
+    lastDate.setDate(lastDate.getDate() - 1)
+    table.unshift({
+      value: lastDate.getDate(),
+      date: lastDate.getTime(),
+      notCurrentMonth: true,
+    })
   }
 
   while (date.getMonth() === month) {
@@ -16,7 +22,12 @@ export function createCalendar(year: any, month: number) {
   // 29 30 31 * * * *
   if (getDay(date) !== 0) {
     for (let i = getDay(date); i < 7; i++) {
-      table.push(null)
+      table.push({
+        value: date.getDate(),
+        date: date.getTime(),
+        notCurrentMonth: true,
+      })
+      date.setDate(date.getDate() + 1)
     }
   }
 
