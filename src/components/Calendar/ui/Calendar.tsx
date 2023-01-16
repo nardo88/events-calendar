@@ -7,6 +7,7 @@ import { createCalendar } from './createCalendar'
 
 import 'dayjs/locale/ru'
 import { Events } from './Events/Events'
+import { CalendarHeader } from './CalendarHeader/CalendarHeader'
 dayjs.locale('ru')
 
 export interface IEvent {
@@ -41,6 +42,7 @@ export const Calendar: FC<CalendarProps> = ({ className, events }) => {
         onPrev={prevMonth}
       />
       <div className={classNames(cls.Calendar, {}, [className])}>
+        <CalendarHeader />
         {calendar.map((date, index) => {
           return (
             <div
@@ -60,6 +62,7 @@ export const Calendar: FC<CalendarProps> = ({ className, events }) => {
                   [cls.currentDay]:
                     !!date &&
                     dayjs(date?.date).isSame(dayjs(currentDay), 'day'),
+                  [cls.pointer]: !!date,
                 })}
               />
               <Events
