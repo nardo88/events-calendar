@@ -13,6 +13,8 @@ dayjs.locale('ru')
 export interface IEvent {
   title: string
   startedAt: number
+  finishedAt: number
+  id: string
 }
 
 interface CalendarProps {
