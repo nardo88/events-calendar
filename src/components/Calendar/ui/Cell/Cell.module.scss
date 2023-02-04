@@ -1,6 +1,6 @@
 .cell {
-    border-right: 1px solid #000;
-    border-bottom: 1px solid #000;
+    border-right: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
     height: 150px;
     position: relative;
     overflow: hidden;
@@ -13,7 +13,7 @@
 }
 
 .today {
-    background-color: rgb(187, 225, 252);
+    background-color: var(--color-light-blue);
 }
 
 .date {
@@ -46,7 +46,7 @@
 
 .currentDay {
     opacity: 0.3;
-    background-color: rgb(163, 219, 120);
+    background-color: var(--color-light-green);
 }
 
 .pointer {
@@ -54,5 +54,5 @@
 }
 
 .notCurrentMonth {
-    background-color: rgb(198, 197, 197);
+    background-color: var(--color-light-gray);
 }

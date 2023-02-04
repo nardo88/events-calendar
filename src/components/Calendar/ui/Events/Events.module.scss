@@ -10,7 +10,7 @@
 .EventItem {
     margin-bottom: 5px;
     width: 100%;
-    background-color: rgb(126, 183, 203);
+    background-color: var(--color-event-bg);
     border-radius: 6px;
     padding: 3px 5px;
     overflow: hidden;

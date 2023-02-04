@@ -1,12 +1,12 @@
 .dayName {
-  border-right: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-right: 1px solid var(--color-black);
+  border-bottom: 1px solid var(--color-black);
   text-align: center;
   font-weight: 600;
 
   @media (max-width: 750px) {
     border-color: transparent;
-    color: gray;
+    color: var(--color-gray);
     height: 35px;
     display: flex;
     align-items: center;

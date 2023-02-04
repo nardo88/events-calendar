@@ -1,21 +1,15 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { FC, useCallback, useState } from 'react'
-import { classNames } from '../../../helpers/classNames'
+import { classNames } from '../../../../helpers/classNames'
 import cls from './Calendar.module.scss'
-import { ControlCalendar } from './ControlCalendar/ControlCalendar'
-import { createCalendar } from './createCalendar'
+import { ControlCalendar } from '../ControlCalendar/ControlCalendar'
+import { createCalendar } from '../../modules/createCalendar'
 
 import 'dayjs/locale/ru'
-import { CalendarHeader } from './CalendarHeader/CalendarHeader'
-import { Cell } from './Cell/Cell'
+import { CalendarHeader } from '../CalendarHeader/CalendarHeader'
+import { Cell } from '../Cell/Cell'
+import { IEvent } from '../../types/calendar'
 dayjs.locale('ru')
-
-export interface IEvent {
-  title: string
-  startedAt: number
-  finishedAt: number
-  id: string
-}
 
 interface CalendarProps {
   className?: string

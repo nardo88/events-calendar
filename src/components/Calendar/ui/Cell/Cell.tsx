@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from 'dayjs'
 import { classNames } from '../../../../helpers/classNames'
-import { IEvent } from '../Calendar'
+import { IEvent } from '../../types/calendar'
 import { Events } from '../Events/Events'
 import cls from './Cell.module.scss'
 

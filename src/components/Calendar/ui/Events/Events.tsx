@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import { FC } from 'react'
 import { classNames } from '../../../../helpers/classNames'
-import { IEvent } from '../Calendar'
+import { IEvent } from '../../types/calendar'
 import cls from './Events.module.scss'
 
 interface EventsProps {
