@@ -6,8 +6,8 @@ import { ControlCalendar } from './ControlCalendar/ControlCalendar'
 import { createCalendar } from './createCalendar'
 
 import 'dayjs/locale/ru'
-import { Events } from './Events/Events'
 import { CalendarHeader } from './CalendarHeader/CalendarHeader'
+import { Cell } from './Cell/Cell'
 dayjs.locale('ru')
 
 export interface IEvent {
@@ -20,11 +20,17 @@ export interface IEvent {
 interface CalendarProps {
   className?: string
   events: IEvent[]
+  value: Dayjs | null
+  onChange: (val: Dayjs) => void
 }
 
-export const Calendar: FC<CalendarProps> = ({ className, events }) => {
+export const Calendar: FC<CalendarProps> = ({
+  className,
+  events,
+  value,
+  onChange,
+}) => {
   const [currentDate, setCurrentDate] = useState(dayjs())
-  const [currentDay, setCurrentDay] = useState<null | Dayjs>(null)
 
   const calendar = createCalendar(currentDate.year(), currentDate.month())
 
@@ -45,36 +51,15 @@ export const Calendar: FC<CalendarProps> = ({ className, events }) => {
       />
       <div className={classNames(cls.Calendar, {}, [className])}>
         <CalendarHeader />
-        {calendar.map((date, index) => {
-          return (
-            <div
-              key={index}
-              className={classNames(
-                cls.cell,
-                {
-                  [cls.today]:
-                    !!date && dayjs(date?.date).isSame(dayjs(), 'day'),
-                },
-                []
-              )}>
-              <div className={cls.date}>{date ? date.value : ''}</div>
-              <div
-                onClick={() => setCurrentDay(dayjs(date?.date || null))}
-                className={classNames(cls.overlay, {
-                  [cls.currentDay]:
-                    !!date &&
-                    dayjs(date?.date).isSame(dayjs(currentDay), 'day'),
-                  [cls.pointer]: !!date,
-                })}
-              />
-              <Events
-                events={events.filter((event) =>
-                  dayjs(event.startedAt).isSame(date?.date, 'day')
-                )}
-              />
-            </div>
-          )
-        })}
+        {calendar.map((date, index) => (
+          <Cell
+            key={date.date}
+            setCurrentDay={onChange}
+            currentDay={value}
+            events={events}
+            {...date}
+          />
+        ))}
       </div>
     </div>
   )

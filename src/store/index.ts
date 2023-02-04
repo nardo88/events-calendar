@@ -11,4 +11,6 @@ const store = configureStore({
   reducer: rootReducers,
 })
 
+export const dispatch = store.dispatch
+
 export default store

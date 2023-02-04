@@ -17,6 +17,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+    }
 }
 
 
@@ -31,7 +36,9 @@
         color: gray;
     }
 
-
+    @media (max-width: 750px) {
+        width: 100%;
+    }
 }
 
 .input {
@@ -41,6 +48,11 @@
     padding: 6px 12px;
     outline: none;
     display: block;
+
+    @media (max-width: 750px) {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
 
 .saveBtn {
@@ -48,6 +60,11 @@
     cursor: pointer;
     margin-left: auto;
     margin-top: 30px;
+
+    @media (max-width: 750px) {
+        width: 100%;
+        margin-top: 0px;
+    }
 }
 
 .title {

@@ -8,6 +8,17 @@
     text-transform: capitalize;
     width: 150px;
   }
+
+  @media (max-width: 750px) {
+    justify-content: space-between;
+
+    p {
+      width: fit-content;
+      margin-right: 0;
+      font-size: 1.5rem;
+      line-height: 130%;
+    }
+  }
 }
 
 .btn {

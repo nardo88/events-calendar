@@ -1,4 +1,6 @@
-export function createCalendar(year: any, month: number) {
+import { IDay } from '../types.ts/calendar'
+
+export function createCalendar(year: any, month: number): IDay[] {
   const date = new Date(year, month)
   const lastDate = new Date(year, month)
 

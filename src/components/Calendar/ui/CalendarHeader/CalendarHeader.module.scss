@@ -3,4 +3,13 @@
   border-bottom: 1px solid #000;
   text-align: center;
   font-weight: 600;
+
+  @media (max-width: 750px) {
+    border-color: transparent;
+    color: gray;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
