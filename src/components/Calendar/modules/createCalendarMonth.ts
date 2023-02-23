@@ -1,6 +1,6 @@
 import { IDay } from '../types/calendar'
 
-export function createCalendar(year: any, month: number): IDay[] {
+export function createCalendarMonth(year: any, month: number): IDay[] {
   const date = new Date(year, month)
   const lastDate = new Date(year, month)
 

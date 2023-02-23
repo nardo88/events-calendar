@@ -1,0 +1,20 @@
+.WeekCeil {
+    width: calc(100% / 8);
+    border: 1px solid var(--color-black);
+    border-left: transparent;
+    border-bottom: transparent;
+}
+
+.dayOfWeek {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border-bottom: 1px solid var(--color-black);
+}
+
+.ceil {
+    height: 30px;
+    border-bottom: 1px solid var(--color-black);
+}

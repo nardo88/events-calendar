@@ -1,6 +1,7 @@
 .ControlCalendar {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 20px 0;
 
   p {
@@ -33,4 +34,32 @@
 
 .left {
   margin-right: 10px;
+}
+
+.dateWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.switchTypeWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-blue);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.switchBtn {
+  width: 90px;
+  padding: 4px 8px;
+  cursor: pointer;
+  background: var(--color-white);
+  color: var(--color-blue);
+  border: none;
+}
+
+.active {
+  color: var(--color-white);
+  background: var(--color-blue);
 }

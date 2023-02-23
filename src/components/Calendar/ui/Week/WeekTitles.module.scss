@@ -1,0 +1,21 @@
+.WeekTitles {
+    width: calc(100% / 8);
+    border: 1px solid var(--color-black);
+}
+
+.empty,
+.ceil {
+    height: 30px;
+    border-bottom: 1px solid var(--color-black);
+}
+
+.ceil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+}

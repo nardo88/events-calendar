@@ -3,12 +3,11 @@ import { FC, useCallback, useState } from 'react'
 import { classNames } from '../../../../helpers/classNames'
 import cls from './Calendar.module.scss'
 import { ControlCalendar } from '../ControlCalendar/ControlCalendar'
-import { createCalendar } from '../../modules/createCalendar'
 
 import 'dayjs/locale/ru'
-import { CalendarHeader } from '../CalendarHeader/CalendarHeader'
-import { Cell } from '../Cell/Cell'
-import { IEvent } from '../../types/calendar'
+import { CalendarVariant, IEvent } from '../../types/calendar'
+import { Month } from '../Month/Month'
+import { Week } from '../Week/Week'
 dayjs.locale('ru')
 
 interface CalendarProps {
@@ -25,16 +24,19 @@ export const Calendar: FC<CalendarProps> = ({
   onChange,
 }) => {
   const [currentDate, setCurrentDate] = useState(dayjs())
-
-  const calendar = createCalendar(currentDate.year(), currentDate.month())
+  const [variant, setVariant] = useState<CalendarVariant>(CalendarVariant.MONTH)
 
   const nextMonth = useCallback(() => {
-    setCurrentDate(currentDate.add(1, 'month'))
-  }, [setCurrentDate, currentDate])
+    variant === CalendarVariant.MONTH
+      ? setCurrentDate(currentDate.add(1, 'month'))
+      : setCurrentDate(currentDate.add(1, 'week'))
+  }, [setCurrentDate, currentDate, variant])
 
   const prevMonth = useCallback(() => {
-    setCurrentDate(currentDate.subtract(1, 'month'))
-  }, [setCurrentDate, currentDate])
+    variant === CalendarVariant.MONTH
+      ? setCurrentDate(currentDate.subtract(1, 'month'))
+      : setCurrentDate(currentDate.subtract(1, 'week'))
+  }, [setCurrentDate, currentDate, variant])
 
   return (
     <div className={cls.calendarWrapper}>
@@ -42,18 +44,20 @@ export const Calendar: FC<CalendarProps> = ({
         currentDate={currentDate}
         onNext={nextMonth}
         onPrev={prevMonth}
+        variant={variant}
+        setVariant={setVariant}
       />
       <div className={classNames(cls.Calendar, {}, [className])}>
-        <CalendarHeader />
-        {calendar.map((date, index) => (
-          <Cell
-            key={date.date}
-            setCurrentDay={onChange}
-            currentDay={value}
+        {variant === CalendarVariant.MONTH && (
+          <Month
+            currentDate={currentDate}
             events={events}
-            {...date}
+            onChange={onChange}
+            value={value}
           />
-        ))}
+        )}
+
+        {variant === CalendarVariant.WEEK && <Week currentDate={currentDate} />}
       </div>
     </div>
   )
